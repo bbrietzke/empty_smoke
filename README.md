@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Articles
+Articles used in creation of this project
+* http://railscasts.com/episodes/406-public-activity?view=asciicast
+  
