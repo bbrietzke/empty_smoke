@@ -15,23 +15,17 @@ class User < ApplicationRecord
   end
 
   def self.from_mastodon(auth)
-    where(provider: auth.provider, username: auth.extra.raw_info.preferred_username).first_or_create do |user|
+    user = where(provider: auth.provider, username: auth.extra.raw_info.preferred_username).first_or_create do |user|
       user.provider = auth.provider
       user.name = auth.info.name
       user.username = auth.extra.raw_info.preferred_username
-      user.profile_url auth.extra.raw_info.profile
+      user.profile_url = auth.extra.raw_info.profile
       user.email = auth.extra.raw_info.preferred_username + "@mastodon.social"
       user.password = Devise.friendly_token[0, 20]
       user.token = auth.credentials.token
     end
+
+    UpdateMastodonUserJob.perform_later(user.id, user.token, "https://mastodon.social")
+    return user
   end
 end
-
-
-# client = Mastodon::REST::Client.new(
-#   base_url: "https://mastodon.social",
-#   bearer_token: auth.credentials.token
-# )
-# u = client.verify_credentials()
-# puts client.inspect
-# puts u.inspect
