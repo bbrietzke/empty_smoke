@@ -9,7 +9,20 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :github, Rails.application.credentials.dig(:github, :client_id), Rails.application.credentials.dig(:github, :client_secret)
+  config.omniauth :github, 
+    Rails.application.credentials.dig(:oauth, :github, :client_id), 
+    Rails.application.credentials.dig(:oauth, :github, :client_secret)
+  config.omniauth :oauth2_generic,
+    Rails.application.credentials.dig(:oauth, :mastodon, :client_id), 
+    Rails.application.credentials.dig(:oauth, :mastodon, :client_secret),
+    scope: "profile push",
+    name: "mastodon",
+    client_options: {
+      site: 'https://mastodon.social',
+      authorize_url: "https://mastodon.social/oauth/authorize" ,    
+      token_url: "https://mastodon.social/oauth/token",
+      user_info_url: "https://mastodon.social/oauth/userinfo"
+    }
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
