@@ -1,3 +1,3 @@
 <% attributes.reject(&:password_digest?).reject(&:attachments?).each do |attribute| -%>
-<td class=""><%%= <%= singular_name %>.<%= attribute.column_name %> %></td>
+<li class=""><strong><%= attribute.human_name %>:</strong><%%= <%= singular_name %>.<%= attribute.column_name %> %></li>
 <% end %>

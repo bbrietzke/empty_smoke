@@ -5,7 +5,7 @@
   <thead><tr><% attributes.reject(&:password_digest?).reject(&:attachments?).each do |attribute| -%><th><%= attribute.human_name -%></th><% end %><th class="commands" colspan="2">Commands</th></tr></thead>
   <tbody> 
   <%% @<%= plural_table_name %>.each do |<%= singular_name %>| %>
-    <tr><% attributes.reject(&:password_digest?).reject(&:attachments?).each do |attribute| -%><td><%%= <%= singular_name %>.<%= attribute.column_name %> %></td><% end %><td>Details</td><td>Edit</td></tr>
+    <tr><% attributes.reject(&:password_digest?).reject(&:attachments?).each do |attribute| -%><td><%%= <%= singular_name %>.<%= attribute.column_name %> %></td><% end %><td><%%= link_to "Details", <%= model_resource_name(singular_table_name) %> %></td><td><%%= link_to 'Edit', edit_<%= singular_route_name %>_path(<%= singular_table_name %>) %></td></tr>
   <%% end  %>
   </tbody>
   <tfoot><tr><td colspan="<%= attributes.count %>">&nbsp;</td><td colspan="2"><%%= @<%= plural_table_name %>.size %> record(s)</td></tr></tfoot>

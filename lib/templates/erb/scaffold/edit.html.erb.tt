@@ -1,8 +1,8 @@
 <%% content_for :title, "Editing <%= human_name.downcase %>" %>
-
-<h1>Editing <%= human_name.downcase %></h1>
-
+<fieldset>
+  <legend>Editing <%= human_name.downcase %></legend>
 <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+</fieldset>
 
 <br>
 
