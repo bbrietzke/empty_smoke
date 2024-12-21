@@ -3,15 +3,15 @@
 one:
   title: MyString
   url: MyString
+  description: MyText
   summary: MyText
-  votes: 1
   published: false
   summarized: false
 
 two:
   title: MyString
   url: MyString
+  description: MyText
   summary: MyText
-  votes: 1
   published: false
   summarized: false

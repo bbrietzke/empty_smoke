@@ -14,12 +14,12 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on "New article"
 
+    fill_in "Description", with: @article.description
     check "Published" if @article.published
     check "Summarized" if @article.summarized
     fill_in "Summary", with: @article.summary
     fill_in "Title", with: @article.title
     fill_in "Url", with: @article.url
-    fill_in "Votes", with: @article.votes
     click_on "Create Article"
 
     assert_text "Article was successfully created"
@@ -30,12 +30,12 @@ class ArticlesTest < ApplicationSystemTestCase
     visit article_url(@article)
     click_on "Edit this article", match: :first
 
+    fill_in "Description", with: @article.description
     check "Published" if @article.published
     check "Summarized" if @article.summarized
     fill_in "Summary", with: @article.summary
     fill_in "Title", with: @article.title
     fill_in "Url", with: @article.url
-    fill_in "Votes", with: @article.votes
     click_on "Update Article"
 
     assert_text "Article was successfully updated"

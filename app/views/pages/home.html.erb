@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+<h2>Add Article</h2>
+
+
+<fieldset>
+  <legend>Add a New Article</legend>
+<%= render "application/articleform", article: @article %>
+</fieldset>
+<% end %>
+<h2>Newest Articles</h2>
