@@ -11,9 +11,9 @@ class UpdateMastodonUserJob < ApplicationJob
         base_url: social_url,
         bearer_token: token
       )
-  
+
       mastodon_user = client.verify_credentials()
-  
+
       user.uid = mastodon_user.id
       user.save
     end

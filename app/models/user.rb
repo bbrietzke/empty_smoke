@@ -27,6 +27,6 @@ class User < ApplicationRecord
     end
 
     UpdateMastodonUserJob.perform_later(user.id, user.token, "https://mastodon.social")
-    return user
+    user
   end
 end

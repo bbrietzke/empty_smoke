@@ -27,7 +27,7 @@ module Erb # :nodoc:
 
     private
       def available_views
-        %w(index edit show new _form _info)
+        %w[index edit show new _form _info]
       end
     end
   end

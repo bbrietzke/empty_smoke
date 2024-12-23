@@ -14,7 +14,7 @@ User.find_or_create_by(email: "noreply@empty-smoke.org") do |user|
 end
 
 [
-    "https://guides.rubyonrails.org/",
+    "https://guides.rubyonrails.org/"
 ].each do |a|
     operator = User.find_or_create_by(email: "noreply@empty-smoke.org")
     operator.articles.find_or_create_by(url: a) do |article|
