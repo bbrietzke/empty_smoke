@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :articles
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :omniauthable, omniauth_providers: [ :github, :mastodon ] # , :recoverable, :registerable, , :rememberable, :validatable
@@ -26,6 +27,6 @@ class User < ApplicationRecord
     end
 
     UpdateMastodonUserJob.perform_later(user.id, user.token, "https://mastodon.social")
-    return user
+    user
   end
 end

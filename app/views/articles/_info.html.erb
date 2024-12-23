@@ -1,0 +1,12 @@
+<div id="<%= dom_id article %>" class="info" >
+  <ul> 
+    <li class="string"><strong>Title:</strong> <%= article.title %></li> 
+    <li class="string"><strong>Url:</strong> <%= article.url %></li> 
+    <li class="text"><strong>Description:</strong> <%= article.description %></li> 
+    <li class="text"><strong>Summary:</strong> <%= article.summary %></li> 
+    <li class="boolean"><strong>Published:</strong> <%= article.published %></li> 
+    <li class="boolean"><strong>Summarized:</strong> <%= article.summarized %></li>
+    <li class="details command"><%= link_to "Details", article %></li>
+    <li class="edit command"><%= link_to "Edit", edit_article_path(@article) %></li>
+  </ul>
+</div>

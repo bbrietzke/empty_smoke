@@ -1,0 +1,16 @@
+<% content_for :title, "Articles" %>
+<h2>Articles</h2>
+<div class='updated_articles'>
+  <ul class='commands'>
+    <li><%= link_to "New article", new_article_path %></li>
+    <li>|</li>
+    <li>Search</li>
+  </ul>
+</div>
+<div>
+  <ul id="articles">
+  <% @articles.each do |a| %>
+    <li><%= render "application/article", article: a %></li>
+  <% end %>
+  </ul>
+</div>

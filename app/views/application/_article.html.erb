@@ -1,0 +1,19 @@
+<ul class='article_summary'>
+<% if article.title.blank? %>
+    <li><%= link_to article.url, article %></li>
+<% else %>
+    <li><%= link_to article.title, article.url , :target => "_blank" %></li>
+<% end %>
+<% if article.summary.blank? %>
+    <li><%= article.description %></li>
+<% else %>
+    <li><%= article.summary %></li>
+<% end %>
+    <li>
+        <ul class='article_commands'>
+            <li><%= link_to 'Details', article %></li>        
+            <li>|</li>
+            <li>Like</li>
+        </ul>
+    </li>
+</ul>

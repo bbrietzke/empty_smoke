@@ -12,3 +12,14 @@ User.find_or_create_by(email: "noreply@empty-smoke.org") do |user|
     user.encrypted_password = "NONONONONONONONONONONO"
     user.username = "the_operator"
 end
+
+[
+    "https://guides.rubyonrails.org/"
+].each do |a|
+    operator = User.find_or_create_by(email: "noreply@empty-smoke.org")
+    operator.articles.find_or_create_by(url: a) do |article|
+        puts article.inspect
+    end
+
+    UpdateArticleJob.perform_later(a)
+end

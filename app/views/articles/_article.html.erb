@@ -1,0 +1,12 @@
+<li class=""><h3><%= article.title %></h3></li>
+<li class=""><%= link_to "View", article.url, :target => "_blank" %></li>
+<% if article.summary.blank? %>
+<li class=""><%= article.description %></li>
+<% else %>
+<li class=""><%= article.summary %></li>
+<% end %>
+<!--
+<li class=""><strong>Published:</strong><%= article.published %></li>
+<li class=""><strong>Summarized:</strong><%= article.summarized %></li>
+-->
+

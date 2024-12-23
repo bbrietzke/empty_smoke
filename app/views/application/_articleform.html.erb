@@ -1,0 +1,8 @@
+<%= form_with(model: article) do |form| %>
+    <ul>
+        <li><%= form.label :url %></li>
+        <li><%= form.text_field :url %></li>
+        <li><%= form.submit %></li>
+    </ul>
+<% end %>
+      

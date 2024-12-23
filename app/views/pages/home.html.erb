@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<% if !user_signed_in? %>
+<p>Log in to add an article</p>
+<% end %>
+<h2>Newest Articles</h2>
+<div id="newest_articles">
+  <ul>
+<% @articles.each do |a| %>
+    <li><%= render "application/article", article: a %></li>
+<% end %>
+  </ul>
+</div>
+
+<% if user_signed_in? %>
+<fieldset>
+  <legend>Add a New Article</legend>
+<%= render "application/articleform", article: @article %>
+</fieldset>
+<% end %>

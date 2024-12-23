@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_19_045129) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_21_010125) do
   create_table "activities", force: :cascade do |t|
     t.string "trackable_type"
     t.integer "trackable_id"
@@ -30,6 +30,20 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_19_045129) do
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable"
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.text "description"
+    t.text "summary"
+    t.boolean "published", default: false
+    t.boolean "summarized", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["url"], name: "index_articles_on_url", unique: true
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -47,4 +61,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_19_045129) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "articles", "users"
 end
