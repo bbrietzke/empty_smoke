@@ -3,5 +3,5 @@ class Article < ApplicationRecord
 
     belongs_to :user
     validates :url, uniqueness: true
-    tracked owner: ->(controller, model) { controller && controller.current_user }
+    tracked owner: ->(controller, model) { controller && controller.current_user || model.user }
 end

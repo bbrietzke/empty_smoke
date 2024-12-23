@@ -20,4 +20,6 @@ end
     operator.articles.find_or_create_by(url: a) do |article|
         puts article.inspect
     end
+
+    UpdateArticleJob.perform_later(a)
 end

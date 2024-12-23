@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         UpdateArticleJob.perform_later(@article.url)
-        format.html { redirect_to @article, notice: "Article was successfully created." }
+        format.html { redirect_to @article, notice: "Article was successfully created. It will take a few minutes to show up on the home page." }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }

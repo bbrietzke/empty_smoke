@@ -6,3 +6,19 @@
 
   <%= button_to "Destroy this article", @article, method: :delete %>
 </div>
+
+<% if @article.activities %>
+<h3>History</h3>
+<div class='history'>
+<% @article.activities.order('created_at desc').each do |act| %>
+  <ul class='activities'>
+    <% if act.key == 'article.update' %>
+    <li class='activity'>Updated by <%= act.owner.name %>.</li>
+    <% elsif act.key == 'article.create' %>
+    <li class='activity'>Created by <%= act.owner.name %>.</li>
+    <% else %>
+    <li><%= act.inspect %></li>
+    <% end %>
+  </ul>
+<% end %>
+<% end %>
