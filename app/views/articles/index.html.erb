@@ -1,12 +1,16 @@
 <% content_for :title, "Articles" %>
 <h2>Articles</h2>
-<div class="commands new"><%= link_to "New article", new_article_path %></div>
-<table id="articles" class="">
-  <thead><tr><th>Title</th><th>Url</th><th>Description</th><th>Summary</th><th>Published</th><th>Summarized</th><th class="commands" colspan="2">Commands</th></tr></thead>
-  <tbody> 
-  <% @articles.each do |article| %>
-    <tr><td><%= article.title %></td><td><%= article.url %></td><td><%= article.description %></td><td><%= article.summary %></td><td><%= article.published %></td><td><%= article.summarized %></td><td><%= link_to "Details", article %></td><td><%= link_to 'Edit', edit_article_path(article) %></td></tr>
-  <% end  %>
-  </tbody>
-  <tfoot><tr><td colspan="6">&nbsp;</td><td colspan="2"><%= @articles.size %> record(s)</td></tr></tfoot>
-</table>
+<div class='updated_articles'>
+  <ul class='commands'>
+    <li><%= link_to "New article", new_article_path %></li>
+    <li>|</li>
+    <li>Search</li>
+  </ul>
+</div>
+<div>
+  <ul id="articles">
+  <% @articles.each do |a| %>
+    <li><%= render "application/article", article: a %></li>
+  <% end %>
+  </ul>
+</div>

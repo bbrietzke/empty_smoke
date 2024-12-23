@@ -2,7 +2,7 @@
 <% if article.title.blank? %>
     <li><%= link_to article.url, article %></li>
 <% else %>
-    <li><%= link_to article.title, article %></li>
+    <li><%= link_to article.title, article.url , :target => "_blank" %></li>
 <% end %>
 <% if article.summary.blank? %>
     <li><%= article.description %></li>
@@ -11,7 +11,7 @@
 <% end %>
     <li>
         <ul class='article_commands'>
-            <li><a href="<%= article.url %>" target="_blank" >View Original</a></li>        
+            <li><%= link_to 'Details', article %></li>        
             <li>|</li>
             <li>Like</li>
         </ul>
