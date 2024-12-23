@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.where(published: true).order('updated_at desc').limit(20)
+    @articles = Article.where(published: true).order("updated_at desc").limit(20)
   end
 
   # GET /articles/1 or /articles/1.json
