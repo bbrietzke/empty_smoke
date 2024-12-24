@@ -22,7 +22,6 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/7,linux/arm/8
           push: true
           tags: bbrietzke/empty_smoke:dev,bbrietzke/empty_smoke:${{ github.run_id }}
-jobs:
   scan_ruby:
     runs-on: ubuntu-latest
 
